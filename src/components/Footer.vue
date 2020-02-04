@@ -1,7 +1,7 @@
 <template>
     <div id="vipfooter">
-      <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
+      <footer class="bg-white">
+            <div class="container my-auto navbar justify-content-center">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; Also see our work at: <a target="_blank" rel="nofollow"
                         href="https://github.com/icesivip">https://github.com/icesivip</a> - 2019

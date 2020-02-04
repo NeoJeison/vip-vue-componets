@@ -5,55 +5,57 @@
       <input class="m-2" type="number" min="1" v-model="newNumberOfPeriods">
       <button class="m-2 btn btn-outline-primary" v-on:click="createTable">Create table</button>
     </div>
-    <table v-if="tableIsCreated" class='table-responsive table text-light'>
-      <thead>
-        <tr class='bg-primary'>
-          <th :colspan="numberOfPeriods+2" scope='col' id='MRPtableHeader' class='text-center'>MRP</th>
-        </tr>
-        <tr class='bg-primary'>
-          <th scope='col'>Period</th>
-          <th scope='col' class='text-center' :key="'hp'+period" v-for="period in headerPeriods">{{ period }}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class='bg-primary' scope='row'>Gross Requeriments</td>
-          <td style='width: 9%; height: 100%;' :key="'gr' + i" v-for="(grossReq, i) in grossRequirements">
-            <input type='number' min='0' v-model="grossRequirements[i]">
-          </td>
-        </tr>
-        <tr>
-          <td class='bg-primary' scope='row'>Scheduled Receptions</td>
-          <td style='width: 9%; height: 100%;' :key="'sr' + i" v-for="(schedReq, i) in scheduledRequirements">
-            <input type='number' min='0' v-model="scheduledRequirements[i]">
-          </td>
-        </tr>
-        <tr>
-          <td class='bg-primary' scope='row'>Available Inventory Programmed</td>
-          <td style='width: 9%; height: 100%;' :key="'aip' + i" v-for="(avaInvPro, i) in availInventProgrammed" 
-            :value="avaInvPro">
-          </td>
-        </tr>
-        <tr>
-          <td class='bg-primary' scope='row'>Net requirements</td>
-          <td style='width: 9%; height: 100%;' :key="'aip' + i" v-for="(netReq, i) in netRequirements" 
-            :value="netReq">
-          </td>
-        </tr>
-        <tr>
-          <td class='bg-primary' scope='row'>Receptions of planned orders</td>
-          <td style='width: 9%; height: 100%;' :key="'rcpo' + i" v-for="(recepPlOrd, i) in receptionPlannedOrders" 
-            :value="recepPlOrd">
-          </td>
-        </tr>
-        <tr>
-          <td class='bg-primary' scope='row'>Release of planned orders</td>
-          <td style='width: 9%; height: 100%;' :key="'rlpo' + i" v-for="(relePlOrd, i) in releasePlannedOrders" 
-            :value="relePlOrd">
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <table v-if="tableIsCreated" class='table-responsive table text-light'>
+        <thead>
+          <tr class='bg-primary'>
+            <th :colspan="numberOfPeriods+2" scope='col' id='MPStableHeader' class='text-center'>MPS</th>
+          </tr>
+          <tr class='bg-primary'>
+            <th scope='col'>Period</th>
+            <th scope='col' class='text-center' :key="'hp'+period" v-for="period in headerPeriods">{{ period }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class='bg-primary' scope='row'>Gross Requeriments</td>
+            <td style='width: 9%; height: 100%;' :key="'gr' + i" v-for="(grossReq, i) in grossRequirements">
+              <input type='number' min='0' v-model="grossRequirements[i]">
+            </td>
+          </tr>
+          <tr>
+            <td class='bg-primary' scope='row'>Scheduled Receptions</td>
+            <td style='width: 9%; height: 100%;' :key="'sr' + i" v-for="(schedReq, i) in scheduledRequirements">
+              <input type='number' min='0' v-model="scheduledRequirements[i]">
+            </td>
+          </tr>
+          <tr>
+            <td class='bg-primary' scope='row'>Available Inventory Programmed</td>
+            <td style='width: 9%; height: 100%;' :key="'aip' + i" v-for="(avaInvPro, i) in availInventProgrammed" 
+              :value="avaInvPro">
+            </td>
+          </tr>
+          <tr>
+            <td class='bg-primary' scope='row'>Net requirements</td>
+            <td style='width: 9%; height: 100%;' :key="'aip' + i" v-for="(netReq, i) in netRequirements" 
+              :value="netReq">
+            </td>
+          </tr>
+          <tr>
+            <td class='bg-primary' scope='row'>Receptions of planned orders</td>
+            <td style='width: 9%; height: 100%;' :key="'rcpo' + i" v-for="(recepPlOrd, i) in receptionPlannedOrders" 
+              :value="recepPlOrd">
+            </td>
+          </tr>
+          <tr>
+            <td class='bg-primary' scope='row'>Release of planned orders</td>
+            <td style='width: 9%; height: 100%;' :key="'rlpo' + i" v-for="(relePlOrd, i) in releasePlannedOrders" 
+              :value="relePlOrd">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="row">
       <div class="col-sm-1">
         <div class="input-group mb-2 flex-nowrap ">
@@ -174,11 +176,15 @@ export default {
       costOfTheArticle: 0,
       maintenanceCost: 0,
       orderingCost: 0,
-      periodicity: '',
       lotSizingRule: '',
       periodsOfSupply: 1,
+
       numberOfPeriods: 0,
       newNumberOfPeriods: 1,
+
+      periodicity: '',
+      //Table attributes
+      
       headerPeriods: [],
       grossRequirements: [],
       scheduledRequirements: [],
